@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "FireBirdVControl1.0", "FireBirdVControl1.0\FireBirdVControl1.0.cproj", "{AB7D46A1-BDE7-4BEA-9D3D-EECFBFC02F59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB7D46A1-BDE7-4BEA-9D3D-EECFBFC02F59}.Debug|AVR.ActiveCfg = Debug|AVR
+		{AB7D46A1-BDE7-4BEA-9D3D-EECFBFC02F59}.Debug|AVR.Build.0 = Debug|AVR
+		{AB7D46A1-BDE7-4BEA-9D3D-EECFBFC02F59}.Release|AVR.ActiveCfg = Release|AVR
+		{AB7D46A1-BDE7-4BEA-9D3D-EECFBFC02F59}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

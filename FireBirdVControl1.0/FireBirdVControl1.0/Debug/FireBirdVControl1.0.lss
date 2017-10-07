@@ -1,0 +1,559 @@
+
+FireBirdVControl1.0.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000004  00800200  00000348  000003dc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000348  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000003  00800204  00800204  000003e0  2**0
+                  ALLOC
+  3 .stab         000006e4  00000000  00000000  000003e0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00000ac4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  00000b5b  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 000000c0  00000000  00000000  00000b8a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   0000047f  00000000  00000000  00000c4a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000018c  00000000  00000000  000010c9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000af4  00000000  00000000  00001255  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000190  00000000  00000000  00001d4c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    0000eb3a  00000000  00000000  00001edc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    00000117  00000000  00000000  00010a16  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 000000a0  00000000  00000000  00010b2d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_macro  00003d1c  00000000  00000000  00010bcd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	71 c0       	rjmp	.+226    	; 0xe4 <__ctors_end>
+   2:	00 00       	nop
+   4:	8e c0       	rjmp	.+284    	; 0x122 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	8c c0       	rjmp	.+280    	; 0x122 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	8a c0       	rjmp	.+276    	; 0x122 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	88 c0       	rjmp	.+272    	; 0x122 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	86 c0       	rjmp	.+268    	; 0x122 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	84 c0       	rjmp	.+264    	; 0x122 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	82 c0       	rjmp	.+260    	; 0x122 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	80 c0       	rjmp	.+256    	; 0x122 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	7e c0       	rjmp	.+252    	; 0x122 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	7c c0       	rjmp	.+248    	; 0x122 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	7a c0       	rjmp	.+244    	; 0x122 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	78 c0       	rjmp	.+240    	; 0x122 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	76 c0       	rjmp	.+236    	; 0x122 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	74 c0       	rjmp	.+232    	; 0x122 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	72 c0       	rjmp	.+228    	; 0x122 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	70 c0       	rjmp	.+224    	; 0x122 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	6e c0       	rjmp	.+220    	; 0x122 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	6c c0       	rjmp	.+216    	; 0x122 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	6a c0       	rjmp	.+212    	; 0x122 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	68 c0       	rjmp	.+208    	; 0x122 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	66 c0       	rjmp	.+204    	; 0x122 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	64 c0       	rjmp	.+200    	; 0x122 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	62 c0       	rjmp	.+196    	; 0x122 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	60 c0       	rjmp	.+192    	; 0x122 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	b0 c0       	rjmp	.+352    	; 0x1c6 <__vector_25>
+  66:	00 00       	nop
+  68:	5c c0       	rjmp	.+184    	; 0x122 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	5a c0       	rjmp	.+180    	; 0x122 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	58 c0       	rjmp	.+176    	; 0x122 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	56 c0       	rjmp	.+172    	; 0x122 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	54 c0       	rjmp	.+168    	; 0x122 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	52 c0       	rjmp	.+164    	; 0x122 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	50 c0       	rjmp	.+160    	; 0x122 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	4e c0       	rjmp	.+156    	; 0x122 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	4c c0       	rjmp	.+152    	; 0x122 <__bad_interrupt>
+  8a:	00 00       	nop
+  8c:	4a c0       	rjmp	.+148    	; 0x122 <__bad_interrupt>
+  8e:	00 00       	nop
+  90:	48 c0       	rjmp	.+144    	; 0x122 <__bad_interrupt>
+  92:	00 00       	nop
+  94:	46 c0       	rjmp	.+140    	; 0x122 <__bad_interrupt>
+  96:	00 00       	nop
+  98:	44 c0       	rjmp	.+136    	; 0x122 <__bad_interrupt>
+  9a:	00 00       	nop
+  9c:	42 c0       	rjmp	.+132    	; 0x122 <__bad_interrupt>
+  9e:	00 00       	nop
+  a0:	40 c0       	rjmp	.+128    	; 0x122 <__bad_interrupt>
+  a2:	00 00       	nop
+  a4:	3e c0       	rjmp	.+124    	; 0x122 <__bad_interrupt>
+  a6:	00 00       	nop
+  a8:	3c c0       	rjmp	.+120    	; 0x122 <__bad_interrupt>
+  aa:	00 00       	nop
+  ac:	3a c0       	rjmp	.+116    	; 0x122 <__bad_interrupt>
+  ae:	00 00       	nop
+  b0:	38 c0       	rjmp	.+112    	; 0x122 <__bad_interrupt>
+  b2:	00 00       	nop
+  b4:	36 c0       	rjmp	.+108    	; 0x122 <__bad_interrupt>
+  b6:	00 00       	nop
+  b8:	34 c0       	rjmp	.+104    	; 0x122 <__bad_interrupt>
+  ba:	00 00       	nop
+  bc:	32 c0       	rjmp	.+100    	; 0x122 <__bad_interrupt>
+  be:	00 00       	nop
+  c0:	30 c0       	rjmp	.+96     	; 0x122 <__bad_interrupt>
+  c2:	00 00       	nop
+  c4:	2e c0       	rjmp	.+92     	; 0x122 <__bad_interrupt>
+  c6:	00 00       	nop
+  c8:	2c c0       	rjmp	.+88     	; 0x122 <__bad_interrupt>
+  ca:	00 00       	nop
+  cc:	2a c0       	rjmp	.+84     	; 0x122 <__bad_interrupt>
+  ce:	00 00       	nop
+  d0:	28 c0       	rjmp	.+80     	; 0x122 <__bad_interrupt>
+  d2:	00 00       	nop
+  d4:	26 c0       	rjmp	.+76     	; 0x122 <__bad_interrupt>
+  d6:	00 00       	nop
+  d8:	24 c0       	rjmp	.+72     	; 0x122 <__bad_interrupt>
+  da:	00 00       	nop
+  dc:	22 c0       	rjmp	.+68     	; 0x122 <__bad_interrupt>
+  de:	00 00       	nop
+  e0:	20 c0       	rjmp	.+64     	; 0x122 <__bad_interrupt>
+	...
+
+000000e4 <__ctors_end>:
+  e4:	11 24       	eor	r1, r1
+  e6:	1f be       	out	0x3f, r1	; 63
+  e8:	cf ef       	ldi	r28, 0xFF	; 255
+  ea:	d1 e2       	ldi	r29, 0x21	; 33
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	cd bf       	out	0x3d, r28	; 61
+  f0:	00 e0       	ldi	r16, 0x00	; 0
+  f2:	0c bf       	out	0x3c, r16	; 60
+
+000000f4 <__do_copy_data>:
+  f4:	12 e0       	ldi	r17, 0x02	; 2
+  f6:	a0 e0       	ldi	r26, 0x00	; 0
+  f8:	b2 e0       	ldi	r27, 0x02	; 2
+  fa:	e8 e4       	ldi	r30, 0x48	; 72
+  fc:	f3 e0       	ldi	r31, 0x03	; 3
+  fe:	00 e0       	ldi	r16, 0x00	; 0
+ 100:	0b bf       	out	0x3b, r16	; 59
+ 102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
+ 104:	07 90       	elpm	r0, Z+
+ 106:	0d 92       	st	X+, r0
+ 108:	a4 30       	cpi	r26, 0x04	; 4
+ 10a:	b1 07       	cpc	r27, r17
+ 10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
+
+0000010e <__do_clear_bss>:
+ 10e:	22 e0       	ldi	r18, 0x02	; 2
+ 110:	a4 e0       	ldi	r26, 0x04	; 4
+ 112:	b2 e0       	ldi	r27, 0x02	; 2
+ 114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
+
+00000116 <.do_clear_bss_loop>:
+ 116:	1d 92       	st	X+, r1
+
+00000118 <.do_clear_bss_start>:
+ 118:	a7 30       	cpi	r26, 0x07	; 7
+ 11a:	b2 07       	cpc	r27, r18
+ 11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
+ 11e:	0a d1       	rcall	.+532    	; 0x334 <main>
+ 120:	11 c1       	rjmp	.+546    	; 0x344 <_exit>
+
+00000122 <__bad_interrupt>:
+ 122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
+
+00000124 <timer5_init>:
+	motion_set(0x01);
+}
+
+void soft_right_2 (void) //Left wheel stationary, Right wheel backward
+{
+	motion_set(0x08);
+ 124:	e1 e2       	ldi	r30, 0x21	; 33
+ 126:	f1 e0       	ldi	r31, 0x01	; 1
+ 128:	10 82       	st	Z, r1
+ 12a:	8f ef       	ldi	r24, 0xFF	; 255
+ 12c:	80 93 25 01 	sts	0x0125, r24
+ 130:	91 e0       	ldi	r25, 0x01	; 1
+ 132:	90 93 24 01 	sts	0x0124, r25
+ 136:	10 92 29 01 	sts	0x0129, r1
+ 13a:	80 93 28 01 	sts	0x0128, r24
+ 13e:	10 92 2b 01 	sts	0x012B, r1
+ 142:	80 93 2a 01 	sts	0x012A, r24
+ 146:	10 92 2d 01 	sts	0x012D, r1
+ 14a:	80 93 2c 01 	sts	0x012C, r24
+ 14e:	89 ea       	ldi	r24, 0xA9	; 169
+ 150:	80 93 20 01 	sts	0x0120, r24
+ 154:	8b e0       	ldi	r24, 0x0B	; 11
+ 156:	80 83       	st	Z, r24
+ 158:	08 95       	ret
+
+0000015a <motion_pin_config>:
+ 15a:	81 b1       	in	r24, 0x01	; 1
+ 15c:	8f 60       	ori	r24, 0x0F	; 15
+ 15e:	81 b9       	out	0x01, r24	; 1
+ 160:	82 b1       	in	r24, 0x02	; 2
+ 162:	80 7f       	andi	r24, 0xF0	; 240
+ 164:	82 b9       	out	0x02, r24	; 2
+ 166:	ea e0       	ldi	r30, 0x0A	; 10
+ 168:	f1 e0       	ldi	r31, 0x01	; 1
+ 16a:	80 81       	ld	r24, Z
+ 16c:	88 61       	ori	r24, 0x18	; 24
+ 16e:	80 83       	st	Z, r24
+ 170:	eb e0       	ldi	r30, 0x0B	; 11
+ 172:	f1 e0       	ldi	r31, 0x01	; 1
+ 174:	80 81       	ld	r24, Z
+ 176:	88 61       	ori	r24, 0x18	; 24
+ 178:	80 83       	st	Z, r24
+ 17a:	08 95       	ret
+
+0000017c <velocity>:
+ 17c:	80 93 28 01 	sts	0x0128, r24
+ 180:	60 93 2a 01 	sts	0x012A, r22
+ 184:	08 95       	ret
+
+00000186 <uart0_init>:
+ 186:	e1 ec       	ldi	r30, 0xC1	; 193
+ 188:	f0 e0       	ldi	r31, 0x00	; 0
+ 18a:	10 82       	st	Z, r1
+ 18c:	10 92 c0 00 	sts	0x00C0, r1
+ 190:	86 e0       	ldi	r24, 0x06	; 6
+ 192:	80 93 c2 00 	sts	0x00C2, r24
+ 196:	8f e5       	ldi	r24, 0x5F	; 95
+ 198:	80 93 c4 00 	sts	0x00C4, r24
+ 19c:	10 92 c5 00 	sts	0x00C5, r1
+ 1a0:	88 e9       	ldi	r24, 0x98	; 152
+ 1a2:	80 83       	st	Z, r24
+ 1a4:	08 95       	ret
+
+000001a6 <motion_set>:
+ 1a6:	92 b1       	in	r25, 0x02	; 2
+ 1a8:	90 7f       	andi	r25, 0xF0	; 240
+ 1aa:	8f 70       	andi	r24, 0x0F	; 15
+ 1ac:	98 2b       	or	r25, r24
+ 1ae:	92 b9       	out	0x02, r25	; 2
+ 1b0:	08 95       	ret
+
+000001b2 <forward>:
+ 1b2:	86 e0       	ldi	r24, 0x06	; 6
+ 1b4:	f8 cf       	rjmp	.-16     	; 0x1a6 <motion_set>
+
+000001b6 <back>:
+ 1b6:	89 e0       	ldi	r24, 0x09	; 9
+ 1b8:	f6 cf       	rjmp	.-20     	; 0x1a6 <motion_set>
+
+000001ba <left>:
+ 1ba:	85 e0       	ldi	r24, 0x05	; 5
+ 1bc:	f4 cf       	rjmp	.-24     	; 0x1a6 <motion_set>
+
+000001be <right>:
+ 1be:	8a e0       	ldi	r24, 0x0A	; 10
+ 1c0:	f2 cf       	rjmp	.-28     	; 0x1a6 <motion_set>
+
+000001c2 <stop>:
+}
+
+void stop (void)
+{
+	motion_set(0x00);
+ 1c2:	80 e0       	ldi	r24, 0x00	; 0
+ 1c4:	f0 cf       	rjmp	.-32     	; 0x1a6 <motion_set>
+
+000001c6 <__vector_25>:
+}
+
+
+//SIGNAL(SIG_USART0_RECV) 		// ISR for receive complete interrupt
+SIGNAL(USART0_RX_vect)
+{
+ 1c6:	1f 92       	push	r1
+ 1c8:	0f 92       	push	r0
+ 1ca:	0f b6       	in	r0, 0x3f	; 63
+ 1cc:	0f 92       	push	r0
+ 1ce:	11 24       	eor	r1, r1
+ 1d0:	0b b6       	in	r0, 0x3b	; 59
+ 1d2:	0f 92       	push	r0
+ 1d4:	2f 93       	push	r18
+ 1d6:	3f 93       	push	r19
+ 1d8:	4f 93       	push	r20
+ 1da:	5f 93       	push	r21
+ 1dc:	6f 93       	push	r22
+ 1de:	7f 93       	push	r23
+ 1e0:	8f 93       	push	r24
+ 1e2:	9f 93       	push	r25
+ 1e4:	af 93       	push	r26
+ 1e6:	bf 93       	push	r27
+ 1e8:	ef 93       	push	r30
+ 1ea:	ff 93       	push	r31
+	data = UDR0; 				//making copy of data from UDR0 in 'data' variable
+ 1ec:	20 91 c6 00 	lds	r18, 0x00C6
+ 1f0:	20 93 06 02 	sts	0x0206, r18
+
+	//UDR0 = data; 				//echo data back to PC
+	
+	if(status == 0 && data == 2){
+ 1f4:	80 91 04 02 	lds	r24, 0x0204
+ 1f8:	90 91 05 02 	lds	r25, 0x0205
+ 1fc:	00 97       	sbiw	r24, 0x00	; 0
+ 1fe:	49 f4       	brne	.+18     	; 0x212 <__vector_25+0x4c>
+ 200:	22 30       	cpi	r18, 0x02	; 2
+ 202:	e1 f4       	brne	.+56     	; 0x23c <__vector_25+0x76>
+		status = 1;
+ 204:	81 e0       	ldi	r24, 0x01	; 1
+ 206:	90 e0       	ldi	r25, 0x00	; 0
+ 208:	90 93 05 02 	sts	0x0205, r25
+ 20c:	80 93 04 02 	sts	0x0204, r24
+ 210:	78 c0       	rjmp	.+240    	; 0x302 <__vector_25+0x13c>
+	}
+	else if(status == 1){
+ 212:	81 30       	cpi	r24, 0x01	; 1
+ 214:	91 05       	cpc	r25, r1
+ 216:	49 f4       	brne	.+18     	; 0x22a <__vector_25+0x64>
+		leftvelocity = data;
+ 218:	20 93 01 02 	sts	0x0201, r18
+		status = 2;
+ 21c:	82 e0       	ldi	r24, 0x02	; 2
+ 21e:	90 e0       	ldi	r25, 0x00	; 0
+ 220:	90 93 05 02 	sts	0x0205, r25
+ 224:	80 93 04 02 	sts	0x0204, r24
+ 228:	6c c0       	rjmp	.+216    	; 0x302 <__vector_25+0x13c>
+	}
+	else if(status == 2){
+ 22a:	02 97       	sbiw	r24, 0x02	; 2
+ 22c:	09 f0       	breq	.+2      	; 0x230 <__vector_25+0x6a>
+ 22e:	69 c0       	rjmp	.+210    	; 0x302 <__vector_25+0x13c>
+		rightvelocity = data;
+ 230:	20 93 00 02 	sts	0x0200, r18
+		status = 0;
+ 234:	10 92 05 02 	sts	0x0205, r1
+ 238:	10 92 04 02 	sts	0x0204, r1
+	}
+	if(status == 0){
+		if(leftvelocity == (uint8_t)128 && rightvelocity == (uint8_t)128)
+ 23c:	80 91 01 02 	lds	r24, 0x0201
+ 240:	80 38       	cpi	r24, 0x80	; 128
+ 242:	31 f4       	brne	.+12     	; 0x250 <__vector_25+0x8a>
+ 244:	80 91 00 02 	lds	r24, 0x0200
+ 248:	80 38       	cpi	r24, 0x80	; 128
+ 24a:	21 f4       	brne	.+8      	; 0x254 <__vector_25+0x8e>
+		{
+			stop();
+ 24c:	ba df       	rcall	.-140    	; 0x1c2 <stop>
+ 24e:	59 c0       	rjmp	.+178    	; 0x302 <__vector_25+0x13c>
+		}
+		
+		else
+		{
+			
+			if(leftvelocity >= (uint8_t)128 && rightvelocity >= (uint8_t)128)
+ 250:	88 23       	and	r24, r24
+ 252:	b4 f4       	brge	.+44     	; 0x280 <__vector_25+0xba>
+ 254:	80 91 00 02 	lds	r24, 0x0200
+ 258:	88 23       	and	r24, r24
+ 25a:	0c f0       	brlt	.+2      	; 0x25e <__vector_25+0x98>
+ 25c:	40 c0       	rjmp	.+128    	; 0x2de <__vector_25+0x118>
+			{
+				forward();
+ 25e:	a9 df       	rcall	.-174    	; 0x1b2 <forward>
+				leftvelocity = 2*(leftvelocity - zeroval);
+ 260:	90 91 02 02 	lds	r25, 0x0202
+ 264:	80 91 01 02 	lds	r24, 0x0201
+ 268:	89 1b       	sub	r24, r25
+ 26a:	88 0f       	add	r24, r24
+ 26c:	80 93 01 02 	sts	0x0201, r24
+				rightvelocity = 2*(rightvelocity - zeroval);
+ 270:	60 91 00 02 	lds	r22, 0x0200
+ 274:	69 1b       	sub	r22, r25
+ 276:	66 0f       	add	r22, r22
+ 278:	60 93 00 02 	sts	0x0200, r22
+				velocity(leftvelocity, rightvelocity);
+ 27c:	7f df       	rcall	.-258    	; 0x17c <velocity>
+ 27e:	41 c0       	rjmp	.+130    	; 0x302 <__vector_25+0x13c>
+				
+			}
+			
+			else if(leftvelocity < (uint8_t)128 && rightvelocity < (uint8_t)128)
+ 280:	80 91 00 02 	lds	r24, 0x0200
+ 284:	88 23       	and	r24, r24
+ 286:	b4 f0       	brlt	.+44     	; 0x2b4 <__vector_25+0xee>
+			{
+				back();
+ 288:	96 df       	rcall	.-212    	; 0x1b6 <back>
+				leftvelocity = 2*(zeroval-leftvelocity);
+ 28a:	60 91 02 02 	lds	r22, 0x0202
+ 28e:	70 e0       	ldi	r23, 0x00	; 0
+ 290:	80 91 01 02 	lds	r24, 0x0201
+ 294:	9b 01       	movw	r18, r22
+ 296:	28 1b       	sub	r18, r24
+ 298:	31 09       	sbc	r19, r1
+ 29a:	c9 01       	movw	r24, r18
+ 29c:	88 0f       	add	r24, r24
+ 29e:	80 93 01 02 	sts	0x0201, r24
+				rightvelocity = 2*(zeroval-rightvelocity);
+ 2a2:	90 91 00 02 	lds	r25, 0x0200
+ 2a6:	69 1b       	sub	r22, r25
+ 2a8:	71 09       	sbc	r23, r1
+ 2aa:	66 0f       	add	r22, r22
+ 2ac:	60 93 00 02 	sts	0x0200, r22
+				velocity(leftvelocity, rightvelocity);
+ 2b0:	65 df       	rcall	.-310    	; 0x17c <velocity>
+ 2b2:	27 c0       	rjmp	.+78     	; 0x302 <__vector_25+0x13c>
+				
+			}
+			
+			else if(leftvelocity < (uint8_t)128 && rightvelocity >= (uint8_t)128)
+			{
+				left();
+ 2b4:	82 df       	rcall	.-252    	; 0x1ba <left>
+				leftvelocity = 2*(zeroval-leftvelocity);
+ 2b6:	20 91 02 02 	lds	r18, 0x0202
+ 2ba:	30 e0       	ldi	r19, 0x00	; 0
+ 2bc:	80 91 01 02 	lds	r24, 0x0201
+ 2c0:	a9 01       	movw	r20, r18
+ 2c2:	48 1b       	sub	r20, r24
+ 2c4:	51 09       	sbc	r21, r1
+ 2c6:	ca 01       	movw	r24, r20
+ 2c8:	88 0f       	add	r24, r24
+ 2ca:	80 93 01 02 	sts	0x0201, r24
+				rightvelocity = 2*(rightvelocity - zeroval);
+ 2ce:	60 91 00 02 	lds	r22, 0x0200
+ 2d2:	62 1b       	sub	r22, r18
+ 2d4:	66 0f       	add	r22, r22
+ 2d6:	60 93 00 02 	sts	0x0200, r22
+				velocity(leftvelocity, rightvelocity);
+ 2da:	50 df       	rcall	.-352    	; 0x17c <velocity>
+ 2dc:	12 c0       	rjmp	.+36     	; 0x302 <__vector_25+0x13c>
+				
+			}
+			else if(leftvelocity >= (uint8_t)128 && rightvelocity < (uint8_t)128)
+			{
+				right();
+ 2de:	6f df       	rcall	.-290    	; 0x1be <right>
+				leftvelocity = 2*(leftvelocity - zeroval);
+ 2e0:	60 91 02 02 	lds	r22, 0x0202
+ 2e4:	70 e0       	ldi	r23, 0x00	; 0
+ 2e6:	80 91 01 02 	lds	r24, 0x0201
+ 2ea:	86 1b       	sub	r24, r22
+ 2ec:	88 0f       	add	r24, r24
+ 2ee:	80 93 01 02 	sts	0x0201, r24
+				rightvelocity = 2*(zeroval-rightvelocity);
+ 2f2:	90 91 00 02 	lds	r25, 0x0200
+ 2f6:	69 1b       	sub	r22, r25
+ 2f8:	71 09       	sbc	r23, r1
+ 2fa:	66 0f       	add	r22, r22
+ 2fc:	60 93 00 02 	sts	0x0200, r22
+				velocity(leftvelocity, rightvelocity);
+ 300:	3d df       	rcall	.-390    	; 0x17c <velocity>
+		buzzer_off();
+	
+
+	}*/
+
+}
+ 302:	ff 91       	pop	r31
+ 304:	ef 91       	pop	r30
+ 306:	bf 91       	pop	r27
+ 308:	af 91       	pop	r26
+ 30a:	9f 91       	pop	r25
+ 30c:	8f 91       	pop	r24
+ 30e:	7f 91       	pop	r23
+ 310:	6f 91       	pop	r22
+ 312:	5f 91       	pop	r21
+ 314:	4f 91       	pop	r20
+ 316:	3f 91       	pop	r19
+ 318:	2f 91       	pop	r18
+ 31a:	0f 90       	pop	r0
+ 31c:	0b be       	out	0x3b, r0	; 59
+ 31e:	0f 90       	pop	r0
+ 320:	0f be       	out	0x3f, r0	; 63
+ 322:	0f 90       	pop	r0
+ 324:	1f 90       	pop	r1
+ 326:	18 95       	reti
+
+00000328 <init_devices>:
+
+
+
+void init_devices (void) //use this function to initialize all devices
+{
+	cli(); //disable all interrupts
+ 328:	f8 94       	cli
+	motion_pin_config();
+ 32a:	17 df       	rcall	.-466    	; 0x15a <motion_pin_config>
+	uart0_init(); //Initailize UART1 for serial communiaction
+ 32c:	2c df       	rcall	.-424    	; 0x186 <uart0_init>
+	timer5_init();
+ 32e:	fa de       	rcall	.-524    	; 0x124 <timer5_init>
+	sei(); //re-enable interrupts
+ 330:	78 94       	sei
+ 332:	08 95       	ret
+
+00000334 <main>:
+
+
+
+int main (void)
+{
+	board_init();
+ 334:	06 d0       	rcall	.+12     	; 0x342 <board_init>
+	
+	init_devices();
+ 336:	f8 df       	rcall	.-16     	; 0x328 <init_devices>
+
+	//stop();
+	forward();
+ 338:	3c df       	rcall	.-392    	; 0x1b2 <forward>
+	velocity(0, 0);
+ 33a:	60 e0       	ldi	r22, 0x00	; 0
+ 33c:	80 e0       	ldi	r24, 0x00	; 0
+ 33e:	1e df       	rcall	.-452    	; 0x17c <velocity>
+ 340:	ff cf       	rjmp	.-2      	; 0x340 <main+0xc>
+
+00000342 <board_init>:
+#include <compiler.h>
+#include <conf_board.h>
+
+
+void board_init(void)
+{
+ 342:	08 95       	ret
+
+00000344 <_exit>:
+ 344:	f8 94       	cli
+
+00000346 <__stop_program>:
+ 346:	ff cf       	rjmp	.-2      	; 0x346 <__stop_program>
