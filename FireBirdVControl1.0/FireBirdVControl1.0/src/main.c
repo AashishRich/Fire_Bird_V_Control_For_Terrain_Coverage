@@ -32,6 +32,7 @@
 
 uint8_t data; //to store received data from UDR1
 int status = 0;
+int ignore_count = 0; //this is to count the signals to ignore in case broadcasting for other bot.
 uint8_t robot_id = (uint8_t )1;
 uint8_t zeroval = (uint8_t)128;
 uint8_t leftvelocity = (uint8_t)128, rightvelocity = (uint8_t)128;
@@ -144,18 +145,36 @@ SIGNAL(USART0_RX_vect)
 	data = UDR0; 				//making copy of data from UDR0 in 'data' variable
 
 	//UDR0 = data; 				//echo data back to PC
+	if(ignore_count == 0)
+	{
+		if(status == 0 && data != 3)
+		{
+			ignore_count = (ignore_count+1)%3;
+			return;
+		}
+		
+		if(status == 0 && data == 3){
+			status = 1;
+			ignore_count = 0;
+		}
+		else if(status == 1){
+			leftvelocity = data;
+			status = 2;
+			ignore_count = 0;
+		}
+		else if(status == 2){
+			rightvelocity = data;
+			status = 0;
+			ignore_count = 0;
+		}
+		
+	}
+	else
+	{
+		ignore_count = (ignore_count+1)%3;
+		return;
+	}
 	
-	if(status == 0 && data == 2){
-		status = 1;
-	}
-	else if(status == 1){
-		leftvelocity = data;
-		status = 2;
-	}
-	else if(status == 2){
-		rightvelocity = data;
-		status = 0;
-	}
 	if(status == 0){
 		if(leftvelocity == (uint8_t)128 && rightvelocity == (uint8_t)128)
 		{

@@ -3,35 +3,35 @@ FireBirdVControl1.0.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000004  00800200  00000348  000003dc  2**0
+  0 .data         00000004  00800200  000003ea  0000047e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000348  00000000  00000000  00000094  2**1
+  1 .text         000003ea  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000003  00800204  00800204  000003e0  2**0
+  2 .bss          00000005  00800204  00800204  00000482  2**0
                   ALLOC
-  3 .stab         000006e4  00000000  00000000  000003e0  2**2
+  3 .stab         000006e4  00000000  00000000  00000484  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000097  00000000  00000000  00000ac4  2**0
+  4 .stabstr      00000097  00000000  00000000  00000b68  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .comment      0000002f  00000000  00000000  00000b5b  2**0
+  5 .comment      0000002f  00000000  00000000  00000bff  2**0
                   CONTENTS, READONLY
-  6 .debug_aranges 000000c0  00000000  00000000  00000b8a  2**0
+  6 .debug_aranges 000000c0  00000000  00000000  00000c2e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   0000047f  00000000  00000000  00000c4a  2**0
+  7 .debug_info   00000491  00000000  00000000  00000cee  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 0000018c  00000000  00000000  000010c9  2**0
+  8 .debug_abbrev 0000018c  00000000  00000000  0000117f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00000af4  00000000  00000000  00001255  2**0
+  9 .debug_line   00000b2a  00000000  00000000  0000130b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000190  00000000  00000000  00001d4c  2**2
+ 10 .debug_frame  00000190  00000000  00000000  00001e38  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    0000eb3a  00000000  00000000  00001edc  2**0
+ 11 .debug_str    0000eb47  00000000  00000000  00001fc8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    00000117  00000000  00000000  00010a16  2**0
+ 12 .debug_loc    00000117  00000000  00000000  00010b0f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 000000a0  00000000  00000000  00010b2d  2**0
+ 13 .debug_ranges 000000a0  00000000  00000000  00010c26  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_macro  00003d1c  00000000  00000000  00010bcd  2**0
+ 14 .debug_macro  00003d1c  00000000  00000000  00010cc6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -166,7 +166,7 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	e8 e4       	ldi	r30, 0x48	; 72
+  fa:	ea ee       	ldi	r30, 0xEA	; 234
   fc:	f3 e0       	ldi	r31, 0x03	; 3
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
@@ -187,11 +187,11 @@ Disassembly of section .text:
  116:	1d 92       	st	X+, r1
 
 00000118 <.do_clear_bss_start>:
- 118:	a7 30       	cpi	r26, 0x07	; 7
+ 118:	a9 30       	cpi	r26, 0x09	; 9
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
- 11e:	0a d1       	rcall	.+532    	; 0x334 <main>
- 120:	11 c1       	rjmp	.+546    	; 0x344 <_exit>
+ 11e:	34 d1       	rcall	.+616    	; 0x388 <main>
+ 120:	62 c1       	rjmp	.+708    	; 0x3e6 <_exit>
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
@@ -321,239 +321,338 @@ SIGNAL(USART0_RX_vect)
  1ea:	ff 93       	push	r31
 	data = UDR0; 				//making copy of data from UDR0 in 'data' variable
  1ec:	20 91 c6 00 	lds	r18, 0x00C6
- 1f0:	20 93 06 02 	sts	0x0206, r18
+ 1f0:	20 93 08 02 	sts	0x0208, r18
 
 	//UDR0 = data; 				//echo data back to PC
-	
-	if(status == 0 && data == 2){
+	if(ignore_count == 0)
  1f4:	80 91 04 02 	lds	r24, 0x0204
  1f8:	90 91 05 02 	lds	r25, 0x0205
  1fc:	00 97       	sbiw	r24, 0x00	; 0
- 1fe:	49 f4       	brne	.+18     	; 0x212 <__vector_25+0x4c>
- 200:	22 30       	cpi	r18, 0x02	; 2
- 202:	e1 f4       	brne	.+56     	; 0x23c <__vector_25+0x76>
-		status = 1;
- 204:	81 e0       	ldi	r24, 0x01	; 1
- 206:	90 e0       	ldi	r25, 0x00	; 0
- 208:	90 93 05 02 	sts	0x0205, r25
- 20c:	80 93 04 02 	sts	0x0204, r24
- 210:	78 c0       	rjmp	.+240    	; 0x302 <__vector_25+0x13c>
+ 1fe:	c1 f5       	brne	.+112    	; 0x270 <__vector_25+0xaa>
+	{
+		if(status == 0 && data != 3)
+ 200:	80 91 06 02 	lds	r24, 0x0206
+ 204:	90 91 07 02 	lds	r25, 0x0207
+ 208:	00 97       	sbiw	r24, 0x00	; 0
+ 20a:	a1 f4       	brne	.+40     	; 0x234 <__vector_25+0x6e>
+ 20c:	23 30       	cpi	r18, 0x03	; 3
+ 20e:	39 f0       	breq	.+14     	; 0x21e <__vector_25+0x58>
+		{
+			ignore_count = (ignore_count+1)%3;
+ 210:	81 e0       	ldi	r24, 0x01	; 1
+ 212:	90 e0       	ldi	r25, 0x00	; 0
+ 214:	90 93 05 02 	sts	0x0205, r25
+ 218:	80 93 04 02 	sts	0x0204, r24
+			return;
+ 21c:	9c c0       	rjmp	.+312    	; 0x356 <__vector_25+0x190>
+		}
+		
+		if(status == 0 && data == 3){
+			status = 1;
+ 21e:	81 e0       	ldi	r24, 0x01	; 1
+ 220:	90 e0       	ldi	r25, 0x00	; 0
+ 222:	90 93 07 02 	sts	0x0207, r25
+ 226:	80 93 06 02 	sts	0x0206, r24
+			ignore_count = 0;
+ 22a:	10 92 05 02 	sts	0x0205, r1
+ 22e:	10 92 04 02 	sts	0x0204, r1
+ 232:	27 c0       	rjmp	.+78     	; 0x282 <__vector_25+0xbc>
+		}
+		else if(status == 1){
+ 234:	81 30       	cpi	r24, 0x01	; 1
+ 236:	91 05       	cpc	r25, r1
+ 238:	69 f4       	brne	.+26     	; 0x254 <__vector_25+0x8e>
+			leftvelocity = data;
+ 23a:	20 93 01 02 	sts	0x0201, r18
+			status = 2;
+ 23e:	82 e0       	ldi	r24, 0x02	; 2
+ 240:	90 e0       	ldi	r25, 0x00	; 0
+ 242:	90 93 07 02 	sts	0x0207, r25
+ 246:	80 93 06 02 	sts	0x0206, r24
+			ignore_count = 0;
+ 24a:	10 92 05 02 	sts	0x0205, r1
+ 24e:	10 92 04 02 	sts	0x0204, r1
+ 252:	17 c0       	rjmp	.+46     	; 0x282 <__vector_25+0xbc>
+		}
+		else if(status == 2){
+ 254:	02 97       	sbiw	r24, 0x02	; 2
+ 256:	09 f0       	breq	.+2      	; 0x25a <__vector_25+0x94>
+ 258:	7e c0       	rjmp	.+252    	; 0x356 <__vector_25+0x190>
+			rightvelocity = data;
+ 25a:	20 93 00 02 	sts	0x0200, r18
+			status = 0;
+ 25e:	10 92 07 02 	sts	0x0207, r1
+ 262:	10 92 06 02 	sts	0x0206, r1
+			ignore_count = 0;
+ 266:	10 92 05 02 	sts	0x0205, r1
+ 26a:	10 92 04 02 	sts	0x0204, r1
+ 26e:	09 c0       	rjmp	.+18     	; 0x282 <__vector_25+0xbc>
+		}
+		
 	}
-	else if(status == 1){
- 212:	81 30       	cpi	r24, 0x01	; 1
- 214:	91 05       	cpc	r25, r1
- 216:	49 f4       	brne	.+18     	; 0x22a <__vector_25+0x64>
-		leftvelocity = data;
- 218:	20 93 01 02 	sts	0x0201, r18
-		status = 2;
- 21c:	82 e0       	ldi	r24, 0x02	; 2
- 21e:	90 e0       	ldi	r25, 0x00	; 0
- 220:	90 93 05 02 	sts	0x0205, r25
- 224:	80 93 04 02 	sts	0x0204, r24
- 228:	6c c0       	rjmp	.+216    	; 0x302 <__vector_25+0x13c>
+	else
+	{
+		ignore_count = (ignore_count+1)%3;
+ 270:	01 96       	adiw	r24, 0x01	; 1
+ 272:	63 e0       	ldi	r22, 0x03	; 3
+ 274:	70 e0       	ldi	r23, 0x00	; 0
+ 276:	90 d0       	rcall	.+288    	; 0x398 <__divmodhi4>
+ 278:	90 93 05 02 	sts	0x0205, r25
+ 27c:	80 93 04 02 	sts	0x0204, r24
+		return;
+ 280:	6a c0       	rjmp	.+212    	; 0x356 <__vector_25+0x190>
 	}
-	else if(status == 2){
- 22a:	02 97       	sbiw	r24, 0x02	; 2
- 22c:	09 f0       	breq	.+2      	; 0x230 <__vector_25+0x6a>
- 22e:	69 c0       	rjmp	.+210    	; 0x302 <__vector_25+0x13c>
-		rightvelocity = data;
- 230:	20 93 00 02 	sts	0x0200, r18
-		status = 0;
- 234:	10 92 05 02 	sts	0x0205, r1
- 238:	10 92 04 02 	sts	0x0204, r1
-	}
+	
 	if(status == 0){
+ 282:	80 91 06 02 	lds	r24, 0x0206
+ 286:	90 91 07 02 	lds	r25, 0x0207
+ 28a:	89 2b       	or	r24, r25
+ 28c:	09 f0       	breq	.+2      	; 0x290 <__vector_25+0xca>
+ 28e:	63 c0       	rjmp	.+198    	; 0x356 <__vector_25+0x190>
 		if(leftvelocity == (uint8_t)128 && rightvelocity == (uint8_t)128)
- 23c:	80 91 01 02 	lds	r24, 0x0201
- 240:	80 38       	cpi	r24, 0x80	; 128
- 242:	31 f4       	brne	.+12     	; 0x250 <__vector_25+0x8a>
- 244:	80 91 00 02 	lds	r24, 0x0200
- 248:	80 38       	cpi	r24, 0x80	; 128
- 24a:	21 f4       	brne	.+8      	; 0x254 <__vector_25+0x8e>
+ 290:	80 91 01 02 	lds	r24, 0x0201
+ 294:	80 38       	cpi	r24, 0x80	; 128
+ 296:	31 f4       	brne	.+12     	; 0x2a4 <__vector_25+0xde>
+ 298:	80 91 00 02 	lds	r24, 0x0200
+ 29c:	80 38       	cpi	r24, 0x80	; 128
+ 29e:	21 f4       	brne	.+8      	; 0x2a8 <__vector_25+0xe2>
 		{
 			stop();
- 24c:	ba df       	rcall	.-140    	; 0x1c2 <stop>
- 24e:	59 c0       	rjmp	.+178    	; 0x302 <__vector_25+0x13c>
+ 2a0:	90 df       	rcall	.-224    	; 0x1c2 <stop>
+ 2a2:	59 c0       	rjmp	.+178    	; 0x356 <__vector_25+0x190>
 		}
 		
 		else
 		{
 			
 			if(leftvelocity >= (uint8_t)128 && rightvelocity >= (uint8_t)128)
- 250:	88 23       	and	r24, r24
- 252:	b4 f4       	brge	.+44     	; 0x280 <__vector_25+0xba>
- 254:	80 91 00 02 	lds	r24, 0x0200
- 258:	88 23       	and	r24, r24
- 25a:	0c f0       	brlt	.+2      	; 0x25e <__vector_25+0x98>
- 25c:	40 c0       	rjmp	.+128    	; 0x2de <__vector_25+0x118>
+ 2a4:	88 23       	and	r24, r24
+ 2a6:	b4 f4       	brge	.+44     	; 0x2d4 <__vector_25+0x10e>
+ 2a8:	80 91 00 02 	lds	r24, 0x0200
+ 2ac:	88 23       	and	r24, r24
+ 2ae:	0c f0       	brlt	.+2      	; 0x2b2 <__vector_25+0xec>
+ 2b0:	40 c0       	rjmp	.+128    	; 0x332 <__vector_25+0x16c>
 			{
 				forward();
- 25e:	a9 df       	rcall	.-174    	; 0x1b2 <forward>
+ 2b2:	7f df       	rcall	.-258    	; 0x1b2 <forward>
 				leftvelocity = 2*(leftvelocity - zeroval);
- 260:	90 91 02 02 	lds	r25, 0x0202
- 264:	80 91 01 02 	lds	r24, 0x0201
- 268:	89 1b       	sub	r24, r25
- 26a:	88 0f       	add	r24, r24
- 26c:	80 93 01 02 	sts	0x0201, r24
+ 2b4:	90 91 02 02 	lds	r25, 0x0202
+ 2b8:	80 91 01 02 	lds	r24, 0x0201
+ 2bc:	89 1b       	sub	r24, r25
+ 2be:	88 0f       	add	r24, r24
+ 2c0:	80 93 01 02 	sts	0x0201, r24
 				rightvelocity = 2*(rightvelocity - zeroval);
- 270:	60 91 00 02 	lds	r22, 0x0200
- 274:	69 1b       	sub	r22, r25
- 276:	66 0f       	add	r22, r22
- 278:	60 93 00 02 	sts	0x0200, r22
+ 2c4:	60 91 00 02 	lds	r22, 0x0200
+ 2c8:	69 1b       	sub	r22, r25
+ 2ca:	66 0f       	add	r22, r22
+ 2cc:	60 93 00 02 	sts	0x0200, r22
 				velocity(leftvelocity, rightvelocity);
- 27c:	7f df       	rcall	.-258    	; 0x17c <velocity>
- 27e:	41 c0       	rjmp	.+130    	; 0x302 <__vector_25+0x13c>
+ 2d0:	55 df       	rcall	.-342    	; 0x17c <velocity>
+ 2d2:	41 c0       	rjmp	.+130    	; 0x356 <__vector_25+0x190>
 				
 			}
 			
 			else if(leftvelocity < (uint8_t)128 && rightvelocity < (uint8_t)128)
- 280:	80 91 00 02 	lds	r24, 0x0200
- 284:	88 23       	and	r24, r24
- 286:	b4 f0       	brlt	.+44     	; 0x2b4 <__vector_25+0xee>
+ 2d4:	80 91 00 02 	lds	r24, 0x0200
+ 2d8:	88 23       	and	r24, r24
+ 2da:	b4 f0       	brlt	.+44     	; 0x308 <__vector_25+0x142>
 			{
 				back();
- 288:	96 df       	rcall	.-212    	; 0x1b6 <back>
+ 2dc:	6c df       	rcall	.-296    	; 0x1b6 <back>
 				leftvelocity = 2*(zeroval-leftvelocity);
- 28a:	60 91 02 02 	lds	r22, 0x0202
- 28e:	70 e0       	ldi	r23, 0x00	; 0
- 290:	80 91 01 02 	lds	r24, 0x0201
- 294:	9b 01       	movw	r18, r22
- 296:	28 1b       	sub	r18, r24
- 298:	31 09       	sbc	r19, r1
- 29a:	c9 01       	movw	r24, r18
- 29c:	88 0f       	add	r24, r24
- 29e:	80 93 01 02 	sts	0x0201, r24
+ 2de:	60 91 02 02 	lds	r22, 0x0202
+ 2e2:	70 e0       	ldi	r23, 0x00	; 0
+ 2e4:	80 91 01 02 	lds	r24, 0x0201
+ 2e8:	9b 01       	movw	r18, r22
+ 2ea:	28 1b       	sub	r18, r24
+ 2ec:	31 09       	sbc	r19, r1
+ 2ee:	c9 01       	movw	r24, r18
+ 2f0:	88 0f       	add	r24, r24
+ 2f2:	80 93 01 02 	sts	0x0201, r24
 				rightvelocity = 2*(zeroval-rightvelocity);
- 2a2:	90 91 00 02 	lds	r25, 0x0200
- 2a6:	69 1b       	sub	r22, r25
- 2a8:	71 09       	sbc	r23, r1
- 2aa:	66 0f       	add	r22, r22
- 2ac:	60 93 00 02 	sts	0x0200, r22
+ 2f6:	90 91 00 02 	lds	r25, 0x0200
+ 2fa:	69 1b       	sub	r22, r25
+ 2fc:	71 09       	sbc	r23, r1
+ 2fe:	66 0f       	add	r22, r22
+ 300:	60 93 00 02 	sts	0x0200, r22
 				velocity(leftvelocity, rightvelocity);
- 2b0:	65 df       	rcall	.-310    	; 0x17c <velocity>
- 2b2:	27 c0       	rjmp	.+78     	; 0x302 <__vector_25+0x13c>
+ 304:	3b df       	rcall	.-394    	; 0x17c <velocity>
+ 306:	27 c0       	rjmp	.+78     	; 0x356 <__vector_25+0x190>
 				
 			}
 			
 			else if(leftvelocity < (uint8_t)128 && rightvelocity >= (uint8_t)128)
 			{
 				left();
- 2b4:	82 df       	rcall	.-252    	; 0x1ba <left>
+ 308:	58 df       	rcall	.-336    	; 0x1ba <left>
 				leftvelocity = 2*(zeroval-leftvelocity);
- 2b6:	20 91 02 02 	lds	r18, 0x0202
- 2ba:	30 e0       	ldi	r19, 0x00	; 0
- 2bc:	80 91 01 02 	lds	r24, 0x0201
- 2c0:	a9 01       	movw	r20, r18
- 2c2:	48 1b       	sub	r20, r24
- 2c4:	51 09       	sbc	r21, r1
- 2c6:	ca 01       	movw	r24, r20
- 2c8:	88 0f       	add	r24, r24
- 2ca:	80 93 01 02 	sts	0x0201, r24
+ 30a:	20 91 02 02 	lds	r18, 0x0202
+ 30e:	30 e0       	ldi	r19, 0x00	; 0
+ 310:	80 91 01 02 	lds	r24, 0x0201
+ 314:	a9 01       	movw	r20, r18
+ 316:	48 1b       	sub	r20, r24
+ 318:	51 09       	sbc	r21, r1
+ 31a:	ca 01       	movw	r24, r20
+ 31c:	88 0f       	add	r24, r24
+ 31e:	80 93 01 02 	sts	0x0201, r24
 				rightvelocity = 2*(rightvelocity - zeroval);
- 2ce:	60 91 00 02 	lds	r22, 0x0200
- 2d2:	62 1b       	sub	r22, r18
- 2d4:	66 0f       	add	r22, r22
- 2d6:	60 93 00 02 	sts	0x0200, r22
+ 322:	60 91 00 02 	lds	r22, 0x0200
+ 326:	62 1b       	sub	r22, r18
+ 328:	66 0f       	add	r22, r22
+ 32a:	60 93 00 02 	sts	0x0200, r22
 				velocity(leftvelocity, rightvelocity);
- 2da:	50 df       	rcall	.-352    	; 0x17c <velocity>
- 2dc:	12 c0       	rjmp	.+36     	; 0x302 <__vector_25+0x13c>
+ 32e:	26 df       	rcall	.-436    	; 0x17c <velocity>
+ 330:	12 c0       	rjmp	.+36     	; 0x356 <__vector_25+0x190>
 				
 			}
 			else if(leftvelocity >= (uint8_t)128 && rightvelocity < (uint8_t)128)
 			{
 				right();
- 2de:	6f df       	rcall	.-290    	; 0x1be <right>
+ 332:	45 df       	rcall	.-374    	; 0x1be <right>
 				leftvelocity = 2*(leftvelocity - zeroval);
- 2e0:	60 91 02 02 	lds	r22, 0x0202
- 2e4:	70 e0       	ldi	r23, 0x00	; 0
- 2e6:	80 91 01 02 	lds	r24, 0x0201
- 2ea:	86 1b       	sub	r24, r22
- 2ec:	88 0f       	add	r24, r24
- 2ee:	80 93 01 02 	sts	0x0201, r24
+ 334:	60 91 02 02 	lds	r22, 0x0202
+ 338:	70 e0       	ldi	r23, 0x00	; 0
+ 33a:	80 91 01 02 	lds	r24, 0x0201
+ 33e:	86 1b       	sub	r24, r22
+ 340:	88 0f       	add	r24, r24
+ 342:	80 93 01 02 	sts	0x0201, r24
 				rightvelocity = 2*(zeroval-rightvelocity);
- 2f2:	90 91 00 02 	lds	r25, 0x0200
- 2f6:	69 1b       	sub	r22, r25
- 2f8:	71 09       	sbc	r23, r1
- 2fa:	66 0f       	add	r22, r22
- 2fc:	60 93 00 02 	sts	0x0200, r22
+ 346:	90 91 00 02 	lds	r25, 0x0200
+ 34a:	69 1b       	sub	r22, r25
+ 34c:	71 09       	sbc	r23, r1
+ 34e:	66 0f       	add	r22, r22
+ 350:	60 93 00 02 	sts	0x0200, r22
 				velocity(leftvelocity, rightvelocity);
- 300:	3d df       	rcall	.-390    	; 0x17c <velocity>
+ 354:	13 df       	rcall	.-474    	; 0x17c <velocity>
 		buzzer_off();
 	
 
 	}*/
 
 }
- 302:	ff 91       	pop	r31
- 304:	ef 91       	pop	r30
- 306:	bf 91       	pop	r27
- 308:	af 91       	pop	r26
- 30a:	9f 91       	pop	r25
- 30c:	8f 91       	pop	r24
- 30e:	7f 91       	pop	r23
- 310:	6f 91       	pop	r22
- 312:	5f 91       	pop	r21
- 314:	4f 91       	pop	r20
- 316:	3f 91       	pop	r19
- 318:	2f 91       	pop	r18
- 31a:	0f 90       	pop	r0
- 31c:	0b be       	out	0x3b, r0	; 59
- 31e:	0f 90       	pop	r0
- 320:	0f be       	out	0x3f, r0	; 63
- 322:	0f 90       	pop	r0
- 324:	1f 90       	pop	r1
- 326:	18 95       	reti
+ 356:	ff 91       	pop	r31
+ 358:	ef 91       	pop	r30
+ 35a:	bf 91       	pop	r27
+ 35c:	af 91       	pop	r26
+ 35e:	9f 91       	pop	r25
+ 360:	8f 91       	pop	r24
+ 362:	7f 91       	pop	r23
+ 364:	6f 91       	pop	r22
+ 366:	5f 91       	pop	r21
+ 368:	4f 91       	pop	r20
+ 36a:	3f 91       	pop	r19
+ 36c:	2f 91       	pop	r18
+ 36e:	0f 90       	pop	r0
+ 370:	0b be       	out	0x3b, r0	; 59
+ 372:	0f 90       	pop	r0
+ 374:	0f be       	out	0x3f, r0	; 63
+ 376:	0f 90       	pop	r0
+ 378:	1f 90       	pop	r1
+ 37a:	18 95       	reti
 
-00000328 <init_devices>:
+0000037c <init_devices>:
 
 
 
 void init_devices (void) //use this function to initialize all devices
 {
 	cli(); //disable all interrupts
- 328:	f8 94       	cli
+ 37c:	f8 94       	cli
 	motion_pin_config();
- 32a:	17 df       	rcall	.-466    	; 0x15a <motion_pin_config>
+ 37e:	ed de       	rcall	.-550    	; 0x15a <motion_pin_config>
 	uart0_init(); //Initailize UART1 for serial communiaction
- 32c:	2c df       	rcall	.-424    	; 0x186 <uart0_init>
+ 380:	02 df       	rcall	.-508    	; 0x186 <uart0_init>
 	timer5_init();
- 32e:	fa de       	rcall	.-524    	; 0x124 <timer5_init>
+ 382:	d0 de       	rcall	.-608    	; 0x124 <timer5_init>
 	sei(); //re-enable interrupts
- 330:	78 94       	sei
- 332:	08 95       	ret
+ 384:	78 94       	sei
+ 386:	08 95       	ret
 
-00000334 <main>:
+00000388 <main>:
 
 
 
 int main (void)
 {
 	board_init();
- 334:	06 d0       	rcall	.+12     	; 0x342 <board_init>
+ 388:	06 d0       	rcall	.+12     	; 0x396 <board_init>
 	
 	init_devices();
- 336:	f8 df       	rcall	.-16     	; 0x328 <init_devices>
+ 38a:	f8 df       	rcall	.-16     	; 0x37c <init_devices>
 
 	//stop();
 	forward();
- 338:	3c df       	rcall	.-392    	; 0x1b2 <forward>
+ 38c:	12 df       	rcall	.-476    	; 0x1b2 <forward>
 	velocity(0, 0);
- 33a:	60 e0       	ldi	r22, 0x00	; 0
- 33c:	80 e0       	ldi	r24, 0x00	; 0
- 33e:	1e df       	rcall	.-452    	; 0x17c <velocity>
- 340:	ff cf       	rjmp	.-2      	; 0x340 <main+0xc>
+ 38e:	60 e0       	ldi	r22, 0x00	; 0
+ 390:	80 e0       	ldi	r24, 0x00	; 0
+ 392:	f4 de       	rcall	.-536    	; 0x17c <velocity>
+ 394:	ff cf       	rjmp	.-2      	; 0x394 <main+0xc>
 
-00000342 <board_init>:
+00000396 <board_init>:
 #include <compiler.h>
 #include <conf_board.h>
 
 
 void board_init(void)
 {
- 342:	08 95       	ret
+ 396:	08 95       	ret
 
-00000344 <_exit>:
- 344:	f8 94       	cli
+00000398 <__divmodhi4>:
+ 398:	97 fb       	bst	r25, 7
+ 39a:	07 2e       	mov	r0, r23
+ 39c:	16 f4       	brtc	.+4      	; 0x3a2 <__divmodhi4+0xa>
+ 39e:	00 94       	com	r0
+ 3a0:	06 d0       	rcall	.+12     	; 0x3ae <__divmodhi4_neg1>
+ 3a2:	77 fd       	sbrc	r23, 7
+ 3a4:	08 d0       	rcall	.+16     	; 0x3b6 <__divmodhi4_neg2>
+ 3a6:	0b d0       	rcall	.+22     	; 0x3be <__udivmodhi4>
+ 3a8:	07 fc       	sbrc	r0, 7
+ 3aa:	05 d0       	rcall	.+10     	; 0x3b6 <__divmodhi4_neg2>
+ 3ac:	3e f4       	brtc	.+14     	; 0x3bc <__divmodhi4_exit>
 
-00000346 <__stop_program>:
- 346:	ff cf       	rjmp	.-2      	; 0x346 <__stop_program>
+000003ae <__divmodhi4_neg1>:
+ 3ae:	90 95       	com	r25
+ 3b0:	81 95       	neg	r24
+ 3b2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 3b4:	08 95       	ret
+
+000003b6 <__divmodhi4_neg2>:
+ 3b6:	70 95       	com	r23
+ 3b8:	61 95       	neg	r22
+ 3ba:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000003bc <__divmodhi4_exit>:
+ 3bc:	08 95       	ret
+
+000003be <__udivmodhi4>:
+ 3be:	aa 1b       	sub	r26, r26
+ 3c0:	bb 1b       	sub	r27, r27
+ 3c2:	51 e1       	ldi	r21, 0x11	; 17
+ 3c4:	07 c0       	rjmp	.+14     	; 0x3d4 <__udivmodhi4_ep>
+
+000003c6 <__udivmodhi4_loop>:
+ 3c6:	aa 1f       	adc	r26, r26
+ 3c8:	bb 1f       	adc	r27, r27
+ 3ca:	a6 17       	cp	r26, r22
+ 3cc:	b7 07       	cpc	r27, r23
+ 3ce:	10 f0       	brcs	.+4      	; 0x3d4 <__udivmodhi4_ep>
+ 3d0:	a6 1b       	sub	r26, r22
+ 3d2:	b7 0b       	sbc	r27, r23
+
+000003d4 <__udivmodhi4_ep>:
+ 3d4:	88 1f       	adc	r24, r24
+ 3d6:	99 1f       	adc	r25, r25
+ 3d8:	5a 95       	dec	r21
+ 3da:	a9 f7       	brne	.-22     	; 0x3c6 <__udivmodhi4_loop>
+ 3dc:	80 95       	com	r24
+ 3de:	90 95       	com	r25
+ 3e0:	bc 01       	movw	r22, r24
+ 3e2:	cd 01       	movw	r24, r26
+ 3e4:	08 95       	ret
+
+000003e6 <_exit>:
+ 3e6:	f8 94       	cli
+
+000003e8 <__stop_program>:
+ 3e8:	ff cf       	rjmp	.-2      	; 0x3e8 <__stop_program>
